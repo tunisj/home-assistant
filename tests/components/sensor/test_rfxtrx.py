@@ -58,6 +58,7 @@ class TestSensorRfxtrx(unittest.TestCase):
                        'devices':
                            {'0a52080705020095220269': {
                                'name': 'Test',
+                               'fire_event': True,
                                'data_type': 'Temperature'}}}}))
 
         self.assertEqual(1, len(rfxtrx_core.RFX_DEVICES))

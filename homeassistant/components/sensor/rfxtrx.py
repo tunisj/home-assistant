@@ -12,7 +12,7 @@ import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.entity import Entity
 from homeassistant.util import slugify
 from homeassistant.components.rfxtrx import (
-    ATTR_AUTOMATIC_ADD, ATTR_NAME, ATTR_FIREEVENT, ATTR_STATE
+    ATTR_AUTOMATIC_ADD, ATTR_NAME, ATTR_FIREEVENT, ATTR_STATE,
     CONF_DEVICES, ATTR_DATA_TYPE, DATA_TYPES, ATTR_ENTITY_ID)
 
 DEPENDENCIES = ['rfxtrx']
@@ -68,7 +68,7 @@ def setup_platform(hass, config, add_devices_callback, discovery_info=None):
                 sensors[key].event = event
                 # Fire event
                 if sensors[key].should_fire_event:
-                    sensors.hass.bus.fire(
+                    sensors[key].hass.bus.fire(
                         "signal_received", {
                             ATTR_ENTITY_ID:
                                 sensors.entity_id,
